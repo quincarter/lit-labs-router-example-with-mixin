@@ -4,6 +4,7 @@ import { LitElement, PropertyValueMap, html } from "lit";
 type Constructor<T = {}> = new (...args: any[]) => T;
 export interface IRouterMixin {
   router: Router;
+  goto: (path: string) => void;
 }
 
 export const RouterMixin = <T extends Constructor<LitElement>>(
@@ -35,7 +36,7 @@ export const RouterMixin = <T extends Constructor<LitElement>>(
     /**
      * @param path A string value representing a valid path defined in the router config
      */
-    goto(path: string) {
+    goto(path: string): void {
       this.router?.goto(path);
     }
 
