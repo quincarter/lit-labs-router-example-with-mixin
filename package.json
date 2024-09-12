@@ -9,11 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "lit": "^3.2.0",
-    "@lit-labs/router": "latest"
+    "@lit-labs/router": "latest",
+    "lit": "^3.2.0"
   },
   "devDependencies": {
-    "typescript": "^5.5.3",
-    "vite": "^5.4.3"
+    "typescript": "^5.6.2",
+    "vite": "^5.4.4"
   }
 }

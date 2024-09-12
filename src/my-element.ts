@@ -1,6 +1,6 @@
-import { LitElement, css, html } from 'lit';
-import { customElement, state } from 'lit/decorators.js';
-import { routerSystem } from './IRouter';
+import { LitElement, css, html } from "lit";
+import { customElement, state } from "lit/decorators.js";
+import { RouterMixin } from "./RouterMixin";
 
 /**
  * An example element.
@@ -8,32 +8,25 @@ import { routerSystem } from './IRouter';
  * @slot - This element has a slot
  * @csspart button - The button
  */
-@customElement('my-element')
-export class MyElement extends LitElement {
-  @state()
-  _routerSystem = routerSystem;
-
-  connectedCallback() {
-    super.connectedCallback();
-    this._routerSystem.create(this);
-    this.requestUpdate();
-    console.log('router system', this._routerSystem);
-  }
-
+@customElement("my-element")
+export class MyElement extends RouterMixin(LitElement) {
   render() {
     return html`
-      <header>Header</header>
-      <main>Main Content: ${this._routerSystem.outlet}</main>
+      <header>
+        <a href="/">Home</a>
+        <a href="/projects">Projects</a>
+        <a href="/about">About</a>
+      </header>
+      <main>${this.router.outlet()}</main>
       <footer>Footer</footer>
     `;
   }
 
-  static styles = css`
-  `;
+  static styles = css``;
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'my-element': MyElement;
+    "my-element": MyElement;
   }
 }
